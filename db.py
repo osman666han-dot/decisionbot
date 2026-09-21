@@ -206,8 +206,15 @@ class DB:
     async def export_throws(self):
         return await self._all(
             "SELECT t.id, t.created_at, t.user_id, u.username, t.question, t.options, "
-            "t.chosen_index, t.chosen_text, t.source, t.hash, t.status "
+            "t.chosen_index, t.chosen_text, t.source, t.request_id, t.t0_ns, t.events, t.hash, t.status "
             "FROM throws t LEFT JOIN users u ON u.id=t.user_id ORDER BY t.id"
+        )
+
+    async def last_throws(self, limit: int = 3):
+        return await self._all(
+            "SELECT id, created_at, request_id, options, chosen_index, chosen_text, source, "
+            "events, t0_ns, hash FROM throws WHERE status='ok' ORDER BY id DESC LIMIT ?",
+            limit,
         )
 
     async def export_users(self):
