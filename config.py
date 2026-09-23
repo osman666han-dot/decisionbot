@@ -20,7 +20,6 @@ CHANNEL_URL = f"https://t.me/{CHANNEL.lstrip('@')}"
 DB_PATH = os.getenv("DB_PATH", str(BASE_DIR / "decision.db"))
 MANUAL_PATH = os.getenv("MANUAL_PATH", str(BASE_DIR / "assets" / "manual.pdf"))
 
-DAILY_LIMIT = _int("DAILY_LIMIT", 5)
 MIN_OPTIONS = 3
 MAX_OPTIONS = 10
 MAX_QUESTION_LEN = 300
