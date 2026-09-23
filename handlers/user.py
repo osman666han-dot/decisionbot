@@ -157,12 +157,6 @@ async def run_throw(
         if not await gate(bot, db, uid, message, "ask"):
             await state.clear()
             return
-        if await db.count_ok_throws(uid, today()) >= config.DAILY_LIMIT:
-            await db.log_event(uid, "limit_hit")
-            await state.clear()
-            await message.answer(texts.LIMIT)
-            return
-
         seq = await db.next_throw_seq(uid)
         request_id = f"{uid}:{seq}"
         waiting = await message.answer(texts.LISTENING)
