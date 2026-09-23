@@ -52,7 +52,6 @@ EVENT_TYPES = [
     ("ask_click", "Вопрос: нажатий"),
 ]
 REFUSAL_TYPES = [
-    ("limit_hit", "Упёрлись в лимит"),
     ("sources_silent", "Потоки молчали"),
     ("sub_check_error", "Ошибки проверки подписки"),
 ]
